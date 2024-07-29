@@ -14,7 +14,6 @@ func f(from string) {
 
 func main() {
 
-	f("direct")
 
 	// To invoke this function in a goroutine, use
 	// `go f(s)`. This new goroutine will execute
@@ -25,11 +24,18 @@ func main() {
 	// function call.
 	go func(msg string) {
 		fmt.Println(msg)
-	}("going :")
+	}("going 1:")
 
-	func(){
-		fmt.Println("Running Concurrently:")
-	}()
+	// func(){
+	// 	fmt.Println("Running:")
+	// }()
+
+	go func(msg string) {
+		fmt.Println(msg)
+	}("going 2:")
+
+
+	f("direct")
 
 	time.Sleep(time.Second)
 	fmt.Println("done")
